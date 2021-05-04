@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parcial1.Isoldi.Consola", "Parcial1.Isoldi.Consola.csproj", "{AD7924C8-0617-4987-8478-9FF44FCE6186}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parcial1.Isoldi.LibreriaFacultad", "..\Parcial1.Isoldi.LibreriaFacultad\Parcial1.Isoldi.LibreriaFacultad.csproj", "{4405669A-90AF-4E4B-AD5A-07AC86A070D4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD7924C8-0617-4987-8478-9FF44FCE6186}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD7924C8-0617-4987-8478-9FF44FCE6186}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD7924C8-0617-4987-8478-9FF44FCE6186}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD7924C8-0617-4987-8478-9FF44FCE6186}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4405669A-90AF-4E4B-AD5A-07AC86A070D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4405669A-90AF-4E4B-AD5A-07AC86A070D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4405669A-90AF-4E4B-AD5A-07AC86A070D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4405669A-90AF-4E4B-AD5A-07AC86A070D4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B7E7D6A5-40A4-4DFE-8F21-D3AB1F4EF67D}
+	EndGlobalSection
+EndGlobal
