@@ -17,18 +17,16 @@ namespace Parcial1.Isoldi.Consola
             _consola = new Consola();
             _presentismo = new Presentismo();
         }
-        // modificar lo que corresponda para que solo finalice el
-        // programa si el usuario presiona X en el menú
         static void Main(string[] args)
         {
             Preceptor preceptorActivo = _presentismo.GetPreceptorActivo();
-            string opcionMenu = ""; // pedir el valor
+            string opcionMenu = "";
 
             do{
                 try
                 {
                     DesplegarOpcionesMenu();
-                    opcionMenu = _consola.IngresarString(new List<string> { "1", "2", "X"});
+                    opcionMenu = _consola.IngresarOpcion(new List<string> { "1", "2", "X"});
                     switch (opcionMenu)
                     {
                         case "1":
@@ -53,39 +51,45 @@ namespace Parcial1.Isoldi.Consola
         }
         static void DesplegarOpcionesMenu()
         {
+            Console.WriteLine("_____________________");
             Console.WriteLine("1) Tomar Asistencia");
             Console.WriteLine("2) Mostrar Asistencia");
             Console.WriteLine("X: Terminar");
+            Console.WriteLine("_____________________");
         }
         static void TomarAsistencia(Preceptor p)
         {
             List<Asistencia> listaAsistencia = new List<Asistencia>();
 
+            // entrada y validacion de datos
             DateTime fechaReal = _consola.IngresarTiempo();
             string fechaAsistencia = Convert.ToString(fechaReal);
-            bool yaRegistrada = _presentismo.AsistenciaRegistrada(fechaAsistencia);
 
+            bool yaRegistrada = _presentismo.AsistenciaRegistrada(fechaAsistencia);
             if(yaRegistrada)
             {
                 throw new AsistenciaExistenteEseDiaException($"ya existen asistencias con esta fecha {fechaAsistencia}.");
             }
 
             List <Alumno> listaAlumnos = _presentismo.GetListaAlumnos();
+            if (listaAlumnos.Count() == 0)
+            {
+                throw new SinAlumnosRegistradosException("no existen alumnos registrados para tomar asistencia.");
+            }
 
+            // generacion de asistencia por cada alumno en la lista
             foreach (Alumno alumno in listaAlumnos)
             {
-                _consola.MostrarMensaje($"esta presente el alumno {alumno.Display()}?");
+                _consola.MostrarMensaje($"esta presente el alumno {alumno.Display()}? (si / no)");
 
-                string respuesta = _consola.IngresarString(new List<string> {"si", "no"});
+                string respuesta = _consola.IngresarOpcion(new List<string> {"si", "no"});
                 bool presente = respuesta == "si";
                 
                 Asistencia nuevaAsistencia = new Asistencia(fechaAsistencia, fechaReal, p, alumno, presente);
 
                 listaAsistencia.Add(nuevaAsistencia);
             }
-
             _presentismo.AgregarAsistencia(listaAsistencia);
-
         }
         static void MostrarAsistencia()
         {
@@ -93,13 +97,15 @@ namespace Parcial1.Isoldi.Consola
             string fechaAsistencia = Convert.ToString(fechaReal);
 
             List<Asistencia> asistencias = _presentismo.GetAsistenciasPorFecha(fechaAsistencia);
-
+            if (asistencias.Count() == 0)
+            {
+                _consola.MostrarMensaje($"No hay asistencias en la fecha {fechaAsistencia}.");
+            }
+            
             foreach (Asistencia asistencia in asistencias)
             {
                 _consola.MostrarMensaje(asistencia.Display());
             }
-            // ingreso fecha
-            // muestro el toString de cada asistencia
         }
     }
 

@@ -37,34 +37,12 @@ namespace Parcial1.Isoldi.LibreriaFacultad
             {
                 registrada = true;
             }
-            //bool registrada = false;
-            //foreach(Asistencia asist in _asistencias)
-            //{
-            //    if (asist.FechaAsistencia == fecha)
-            //    {
-            //        registrada = true;
-            //        break;
-            //    }
-            //}
             return registrada;
         }
 
         private int GetCantidadAlumnosRegulares()
         {
             return this._alumnos.Where(o => o is AlumnoRegular).Count();
-
-            // int cantidad = 0;
-
-            // foreach(Alumno alum in _alumnos)
-            // {
-            //     if(alum is AlumnoRegular)
-            //     {
-            //         cantidad += 1;
-            //     }
-            // }
-
-            // return cantidad;
-
         }
 
         public Preceptor GetPreceptorActivo()
@@ -97,17 +75,6 @@ namespace Parcial1.Isoldi.LibreriaFacultad
             List<Asistencia> asistencias = this._asistencias.FindAll(o => o.FechaAsistencia == fecha);
 
             return asistencias;
-
-            // List <Asistencia> asistencias = new List<Asistencia>();
-
-            // foreach (Asistencia asist in _asistencias)
-            // {
-            // if (asist.FechaAsistencia == fecha)
-            // {
-            // asistencias.Add(asist);
-            // }
-            // }
-            // return asistencias;
         }
     }
 }

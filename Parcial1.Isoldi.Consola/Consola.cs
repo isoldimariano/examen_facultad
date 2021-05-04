@@ -18,7 +18,7 @@ namespace Parcial1.Isoldi.Consola
             return Console.ReadLine();
         }
 
-        public string IngresarString(List<string> opciones)
+        public string IngresarOpcion(List<string> opciones)
         {
             string opcion;
             do
